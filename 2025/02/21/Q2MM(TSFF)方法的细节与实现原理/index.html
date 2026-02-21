@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/omcat.github.io/img/fluid.png">
+  <link rel="icon" href="/omcat.github.io/img/fluid.png">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,9 +21,9 @@
   
     <meta name="description" content="Q2MM(TSFF)方法的细节与实现原理TSFF力场由来已久，早期的科研人员通过传统的分子力场方法直接应用到反应过渡态的方式进行反应动力学研究。Q2MM是一种经过Per-Ola Norrby课题组经过长达二十多年开发形成的全新具有高度实用价值的过渡态力场方法，目前已经被集成到ACE（Asymmetric catalytic evaluation）和CatVS（Catalyst virtual sc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2025/02/21/Q2MM(TSFF)%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%86%E8%8A%82%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:title" content="Omcat&#39;s Blog">
+<meta property="og:url" content="https://senppoa.github.io/omcat.github.io/2025/02/21/Q2MM(TSFF)%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%86%E8%8A%82%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Omcat&#39;s Blog">
 <meta property="og:description" content="Q2MM(TSFF)方法的细节与实现原理TSFF力场由来已久，早期的科研人员通过传统的分子力场方法直接应用到反应过渡态的方式进行反应动力学研究。Q2MM是一种经过Per-Ola Norrby课题组经过长达二十多年开发形成的全新具有高度实用价值的过渡态力场方法，目前已经被集成到ACE（Asymmetric catalytic evaluation）和CatVS（Catalyst virtual sc">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030101850260.png">
@@ -36,7 +36,7 @@
   
   
   
-  <title>Hexo</title>
+  <title>Omcat&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -60,12 +60,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/omcat.github.io/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/omcat.github.io/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/omcat.github.io/css/highlight-dark.css" />
   
 
 
@@ -74,15 +74,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"senppoa.github.io","root":"/omcat.github.io/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/omcat.github.io/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/omcat.github.io/js/utils.js" ></script>
+  <script  src="/omcat.github.io/js/color-schema.js" ></script>
   
 
 
@@ -99,7 +99,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/omcat.github.io/">
       <strong>Fluid</strong>
     </a>
 
@@ -118,7 +118,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
+              <a class="nav-link" href="/omcat.github.io/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -130,7 +130,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
+              <a class="nav-link" href="/omcat.github.io/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -142,7 +142,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
+              <a class="nav-link" href="/omcat.github.io/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -154,7 +154,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
+              <a class="nav-link" href="/omcat.github.io/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -166,7 +166,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
+              <a class="nav-link" href="/omcat.github.io/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/omcat.github.io/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -282,9 +282,9 @@
 <p>![1c07abea3fa047817db72a78c606ade](E:\Softwares\WeChat\WeChat Files\wxid_mw2n7uz79zg222\FileStorage\Temp\1c07abea3fa047817db72a78c606ade.png)</p>
 <p>TSFF（过渡态力场，Transition State Force Field）方法是专门为准确预测化学反应中的过渡态能量而开发的。传统的力场方法（如分子力学）主要用于预测分子在平衡状态下的几何结构和相对稳定的构象转变。然而，传统力场通常不适用于反应中的键断裂或形成过程，因为这些过程涉及显著的几何变形和势能面的复杂变化。</p>
 <p>TSFF方法的核心创新在于，将过渡态视为势能面的局部极小值，并通过重新构建力场参数，使得过渡态几何结构可以通过最小化能量直接获得(2003_TSFF过渡态力场的原理)。与常规力场方法不同，TSFF不依赖反应物和产物的势能面，而是直接将过渡态的几何信息融入力场中。这种方法不仅能够有效捕捉过渡态的能量，还能准确预测类似反应的相对反应性和选择性。</p>
-<h2 id="TSFF的原理"><a href="#TSFF的原理" class="headerlink" title="TSFF的原理"></a>TSFF的原理</h2><h3 id="力场参数的回归流程"><a href="#力场参数的回归流程" class="headerlink" title="力场参数的回归流程"></a>力场参数的回归流程</h3><p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030101850260.png" srcset="/img/loading.gif" lazyload alt="image-20241030101850260"></p>
+<h2 id="TSFF的原理"><a href="#TSFF的原理" class="headerlink" title="TSFF的原理"></a>TSFF的原理</h2><h3 id="力场参数的回归流程"><a href="#力场参数的回归流程" class="headerlink" title="力场参数的回归流程"></a>力场参数的回归流程</h3><p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030101850260.png" srcset="/omcat.github.io/img/loading.gif" lazyload alt="image-20241030101850260"></p>
 <h3 id="过渡态结构优化上的巧思"><a href="#过渡态结构优化上的巧思" class="headerlink" title="过渡态结构优化上的巧思"></a>过渡态结构优化上的巧思</h3><p>TSFF拟合需要QM计算得到的精确过渡态的结构以及其对应的Hessian矩阵，这里对标签值中的Hessian矩阵进行了修改，将Hessian矩阵对角化之后得到的特征值中的唯一的负值改成了+1（一个相对较大的正特征值），这样做会使得过渡态沿着反应路径（MEP）的势能面的曲率反转变成正值，从可视化角度看就是势能面进行了翻转，如下图所示，原先过渡态上的鞍点变成了极小点，这样操作之后，就可以采用最小化优化算法来优化过渡态结构了。</p>
-<p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030102428789.png" srcset="/img/loading.gif" lazyload alt="image-20241030102428789"></p>
+<p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030102428789.png" srcset="/omcat.github.io/img/loading.gif" lazyload alt="image-20241030102428789"></p>
 <!--补充知识1：E对R求二阶偏导数得到维度为(3*N，3*N)的Hessian矩阵，Hessian中的每一个元素都是关于两个不同原子坐标的能量的导数，其中对角元素是每个原子自身坐标关于能量的二阶偏导数，因此在使用Hessian时一般只需要上或者下三角阵即可包含全部所需的信息-->
 
 <!--补充知识2：Hessian对角化操作可以求出特征值和特征向量，特征值对应分子系统中原子与原子之间的振动频率，特征向量对应振动方向及振幅 。特征值全部为正代表曲率为正，坐标不论怎么改变，不论向着什么方向，能量都会升高，这对应着势能面上的谷底（极小点）；特征值除了反应坐标方向为负值（曲率为负值，也是唯一的虚频的来源，参见下面的公式），其余都为正，这对应着过渡态，也就是势能面上的鞍点，因为这个点上的结构只有沿着反应坐标变化能量才会降低，而其他所有方向都会升高-->
@@ -327,7 +327,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div></div>
-      <div>http://example.com/2025/02/21/Q2MM(TSFF)方法的细节与实现原理/</div>
+      <div>https://senppoa.github.io/omcat.github.io/2025/02/21/Q2MM(TSFF)方法的细节与实现原理/</div>
     </div>
     <div class="license-meta">
       
@@ -371,7 +371,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/21/%E5%8E%9F%E5%AD%90%E6%95%B0%E5%A4%A7%E4%BA%8E100%E7%9A%84%E5%A4%8D%E6%9D%82%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%9C%89%E6%9C%BA%E9%87%91%E5%B1%9E%E5%82%AC%E5%8C%96%E5%8F%8D%E5%BA%94%E7%9A%84%E8%BF%87%E6%B8%A1%E6%80%81%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/" title="">
+                      <a href="/omcat.github.io/2025/02/21/%E5%8E%9F%E5%AD%90%E6%95%B0%E5%A4%A7%E4%BA%8E100%E7%9A%84%E5%A4%8D%E6%9D%82%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%9C%89%E6%9C%BA%E9%87%91%E5%B1%9E%E5%82%AC%E5%8C%96%E5%8F%8D%E5%BA%94%E7%9A%84%E8%BF%87%E6%B8%A1%E6%80%81%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/" title="">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
@@ -381,7 +381,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/21/hello-world/" title="Hello World">
+                      <a href="/omcat.github.io/2025/02/21/hello-world/" title="Hello World">
                         <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -510,8 +510,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/omcat.github.io/js/events.js" ></script>
+<script  src="/omcat.github.io/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -533,7 +533,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/omcat.github.io/js/img-lazyload.js" ></script>
   
 
 
@@ -632,7 +632,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/omcat.github.io/js/local-search.js" ></script>
 
 
 
@@ -640,7 +640,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/omcat.github.io/js/boot.js" ></script>
 
 
   
