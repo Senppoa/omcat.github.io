@@ -35,27 +35,29 @@
   
   
   <entry>
-    <title>IBOView分析教程</title>
-    <link href="/omcat.github.io/2026/02/21/IBOView%E5%88%86%E6%9E%90%E6%95%99%E7%A8%8B/"/>
-    <url>/omcat.github.io/2026/02/21/IBOView%E5%88%86%E6%9E%90%E6%95%99%E7%A8%8B/</url>
+    <title>Gaussian程序GPU4pyscf接口安装及使用指南</title>
+    <link href="/omcat.github.io/2026/02/21/Gaussian%E7%A8%8B%E5%BA%8FGPU4pyscf%E6%8E%A5%E5%8F%A3%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+    <url>/omcat.github.io/2026/02/21/Gaussian%E7%A8%8B%E5%BA%8FGPU4pyscf%E6%8E%A5%E5%8F%A3%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
     
-    <content type="html"><![CDATA[<h1 id="IBOView分析教程"><a href="#IBOView分析教程" class="headerlink" title="IBOView分析教程"></a>IBOView分析教程</h1><h2 id="计算指南"><a href="#计算指南" class="headerlink" title="计算指南"></a>计算指南</h2><p>IBOView的指南在官网上基本写得很全了，软件可视化建议直接下载windows版本来画图，波函数文件建议采用gaussian计算好之后再导入。</p><p><a href="http://iboview.org/_bldUPAt.html">http://iboview.org/_bldUPAt.html</a> 使用Gaussian计算波函数就是一次单点能计算任务，在优化好的结构基础上做。route section命令需要采用官方推荐的<code>#p gfinput IOP(6/7=3) b3lyp/Def2TZVP geom=connectivity</code></p><h2 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h2><p>Gaussian计算完成之后输出的.chk文件需要进行如下转换，最终导出为IBOView可以识别的.molden文件。工具为Sob的Multiwfn</p><p>Multiwfn格式转换教程：<a href="http://sobereva.com/379">http://sobereva.com/379</a></p><blockquote><p>Multiwfn的主功能100里的子功能2可以把载入的文件转化成各种格式，目前能输出的格式包括mwfn、pdb、xyz、chg、wfn、wfx、molden、fch、wfn。还能输出47文件，这是独立的NBO程序（即GENNBO）的输入文件。还能输出带有当前原子坐标的各种主流量子化学程序（如Gaussian、GAMESS-US、Molpro、Molcas、ORCA、Dalton等等）和第一性原理程序（CP2K、Quantum ESPRESSO、VASP）的输入文件。如果Multiwfn载入的文件包含基函数信息，那么生成的GAMESS-US、Dalton和Gaussian输入文件里还可以带着初猜波函数信息。Multiwfn的产生ORCA、CP2K、PSI4输入文件的功能尤为强大和重要</p></blockquote><ol><li>将chk文件转换为fchk非二进制格式文件：直接命令行执行：formchk xxx.chk</li><li>启动Multiwfn将fchk转换为molden：启动Multiwfn之后输入xxx.fchk的路径，输入100-2-6，然后enter就可以导出.molden文件了</li><li>使用IBOView画图</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="Gaussian程序GPU4pyscf接口安装及使用指南"><a href="#Gaussian程序GPU4pyscf接口安装及使用指南" class="headerlink" title="Gaussian程序GPU4pyscf接口安装及使用指南"></a>Gaussian程序GPU4pyscf接口安装及使用指南</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p>首先安装好pyscf环境 (<a href="https://pyscf.org/user/install.html)%EF%BC%9A">https://pyscf.org/user/install.html)：</a></p><ol><li><code>conda create -n pyscf python=3.10</code></li><li><code>pip install --prefer-binary pyscf</code></li></ol><p>然后安装GPU4pyscf</p><ol><li><p>先要检查本机的CUDA版本，需要安装CudaToolkit查看，命令为：<code>nvcc -version</code>，nvidia -smi的cuda版本并不是真实的版本，而是指的是当前cuda能够最高支持的版本。</p></li><li><p>安装GPU4pyscf <a href="https://pyscf.org/user/gpu.html%EF%BC%9A">https://pyscf.org/user/gpu.html：</a></p><p><code>pip3 install gpu4pyscf-cuda12x</code></p><p><code>pip3 install cutensor-cu12</code></p></li></ol><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>直接在gjf中定义好接口，然后g16运行，参考gpu4pyscf-test.gjf</p>]]></content>
     
     
     <categories>
       
-      <category>工具软件</category>
+      <category>量子化学软件</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>可视化</tag>
+      <tag>安装</tag>
       
-      <tag>IBOView</tag>
+      <tag>Gaussian</tag>
       
-      <tag>分析</tag>
+      <tag>GPU</tag>
+      
+      <tag>pyscf</tag>
       
     </tags>
     
@@ -95,29 +97,27 @@
   
   
   <entry>
-    <title>Gaussian程序GPU4pyscf接口安装及使用指南</title>
-    <link href="/omcat.github.io/2026/02/21/Gaussian%E7%A8%8B%E5%BA%8FGPU4pyscf%E6%8E%A5%E5%8F%A3%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
-    <url>/omcat.github.io/2026/02/21/Gaussian%E7%A8%8B%E5%BA%8FGPU4pyscf%E6%8E%A5%E5%8F%A3%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
+    <title>IBOView分析教程</title>
+    <link href="/omcat.github.io/2026/02/21/IBOView%E5%88%86%E6%9E%90%E6%95%99%E7%A8%8B/"/>
+    <url>/omcat.github.io/2026/02/21/IBOView%E5%88%86%E6%9E%90%E6%95%99%E7%A8%8B/</url>
     
-    <content type="html"><![CDATA[<h1 id="Gaussian程序GPU4pyscf接口安装及使用指南"><a href="#Gaussian程序GPU4pyscf接口安装及使用指南" class="headerlink" title="Gaussian程序GPU4pyscf接口安装及使用指南"></a>Gaussian程序GPU4pyscf接口安装及使用指南</h1><h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p>首先安装好pyscf环境 (<a href="https://pyscf.org/user/install.html)%EF%BC%9A">https://pyscf.org/user/install.html)：</a></p><ol><li><code>conda create -n pyscf python=3.10</code></li><li><code>pip install --prefer-binary pyscf</code></li></ol><p>然后安装GPU4pyscf</p><ol><li><p>先要检查本机的CUDA版本，需要安装CudaToolkit查看，命令为：<code>nvcc -version</code>，nvidia -smi的cuda版本并不是真实的版本，而是指的是当前cuda能够最高支持的版本。</p></li><li><p>安装GPU4pyscf <a href="https://pyscf.org/user/gpu.html%EF%BC%9A">https://pyscf.org/user/gpu.html：</a></p><p><code>pip3 install gpu4pyscf-cuda12x</code></p><p><code>pip3 install cutensor-cu12</code></p></li></ol><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>直接在gjf中定义好接口，然后g16运行，参考gpu4pyscf-test.gjf</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="IBOView分析教程"><a href="#IBOView分析教程" class="headerlink" title="IBOView分析教程"></a>IBOView分析教程</h1><h2 id="计算指南"><a href="#计算指南" class="headerlink" title="计算指南"></a>计算指南</h2><p>IBOView的指南在官网上基本写得很全了，软件可视化建议直接下载windows版本来画图，波函数文件建议采用gaussian计算好之后再导入。</p><p><a href="http://iboview.org/_bldUPAt.html">http://iboview.org/_bldUPAt.html</a> 使用Gaussian计算波函数就是一次单点能计算任务，在优化好的结构基础上做。route section命令需要采用官方推荐的<code>#p gfinput IOP(6/7=3) b3lyp/Def2TZVP geom=connectivity</code></p><h2 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h2><p>Gaussian计算完成之后输出的.chk文件需要进行如下转换，最终导出为IBOView可以识别的.molden文件。工具为Sob的Multiwfn</p><p>Multiwfn格式转换教程：<a href="http://sobereva.com/379">http://sobereva.com/379</a></p><blockquote><p>Multiwfn的主功能100里的子功能2可以把载入的文件转化成各种格式，目前能输出的格式包括mwfn、pdb、xyz、chg、wfn、wfx、molden、fch、wfn。还能输出47文件，这是独立的NBO程序（即GENNBO）的输入文件。还能输出带有当前原子坐标的各种主流量子化学程序（如Gaussian、GAMESS-US、Molpro、Molcas、ORCA、Dalton等等）和第一性原理程序（CP2K、Quantum ESPRESSO、VASP）的输入文件。如果Multiwfn载入的文件包含基函数信息，那么生成的GAMESS-US、Dalton和Gaussian输入文件里还可以带着初猜波函数信息。Multiwfn的产生ORCA、CP2K、PSI4输入文件的功能尤为强大和重要</p></blockquote><ol><li>将chk文件转换为fchk非二进制格式文件：直接命令行执行：formchk xxx.chk</li><li>启动Multiwfn将fchk转换为molden：启动Multiwfn之后输入xxx.fchk的路径，输入100-2-6，然后enter就可以导出.molden文件了</li><li>使用IBOView画图</li></ol>]]></content>
     
     
     <categories>
       
-      <category>量子化学软件</category>
+      <category>工具软件</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>安装</tag>
+      <tag>可视化</tag>
       
-      <tag>Gaussian</tag>
+      <tag>IBOView</tag>
       
-      <tag>GPU</tag>
-      
-      <tag>pyscf</tag>
+      <tag>分析</tag>
       
     </tags>
     
@@ -144,11 +144,11 @@
       
       <tag>Ubuntu</tag>
       
+      <tag>教程</tag>
+      
       <tag>终端</tag>
       
       <tag>文件操作</tag>
-      
-      <tag>教程</tag>
       
     </tags>
     
@@ -164,35 +164,6 @@
     <content type="html"><![CDATA[<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Q2MM(TSFF)方法的细节与实现原理</title>
-    <link href="/omcat.github.io/2025/02/21/Q2MM(TSFF)%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%86%E8%8A%82%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
-    <url>/omcat.github.io/2025/02/21/Q2MM(TSFF)%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%86%E8%8A%82%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Q2MM-TSFF-方法的细节与实现原理"><a href="#Q2MM-TSFF-方法的细节与实现原理" class="headerlink" title="Q2MM(TSFF)方法的细节与实现原理"></a>Q2MM(TSFF)方法的细节与实现原理</h1><p>TSFF力场由来已久，早期的科研人员通过传统的分子力场方法直接应用到反应过渡态的方式进行反应动力学研究。Q2MM是一种经过Per-Ola Norrby课题组经过长达二十多年开发形成的全新具有高度实用价值的过渡态力场方法，目前已经被集成到ACE（Asymmetric catalytic evaluation）和CatVS（Catalyst virtual screening）这两个全自动化均相催化剂虚拟筛选软件之中，相关论文发表于Nat. Catalysis，JACS，JCC，Chem. Sci. 等期刊。</p><p>![1c07abea3fa047817db72a78c606ade](E:\Softwares\WeChat\WeChat Files\wxid_mw2n7uz79zg222\FileStorage\Temp\1c07abea3fa047817db72a78c606ade.png)</p><p>TSFF（过渡态力场，Transition State Force Field）方法是专门为准确预测化学反应中的过渡态能量而开发的。传统的力场方法（如分子力学）主要用于预测分子在平衡状态下的几何结构和相对稳定的构象转变。然而，传统力场通常不适用于反应中的键断裂或形成过程，因为这些过程涉及显著的几何变形和势能面的复杂变化。</p><p>TSFF方法的核心创新在于，将过渡态视为势能面的局部极小值，并通过重新构建力场参数，使得过渡态几何结构可以通过最小化能量直接获得(2003_TSFF过渡态力场的原理)。与常规力场方法不同，TSFF不依赖反应物和产物的势能面，而是直接将过渡态的几何信息融入力场中。这种方法不仅能够有效捕捉过渡态的能量，还能准确预测类似反应的相对反应性和选择性。</p><h2 id="TSFF的原理"><a href="#TSFF的原理" class="headerlink" title="TSFF的原理"></a>TSFF的原理</h2><h3 id="力场参数的回归流程"><a href="#力场参数的回归流程" class="headerlink" title="力场参数的回归流程"></a>力场参数的回归流程</h3><p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030101850260.png" alt="image-20241030101850260"></p><h3 id="过渡态结构优化上的巧思"><a href="#过渡态结构优化上的巧思" class="headerlink" title="过渡态结构优化上的巧思"></a>过渡态结构优化上的巧思</h3><p>TSFF拟合需要QM计算得到的精确过渡态的结构以及其对应的Hessian矩阵，这里对标签值中的Hessian矩阵进行了修改，将Hessian矩阵对角化之后得到的特征值中的唯一的负值改成了+1（一个相对较大的正特征值），这样做会使得过渡态沿着反应路径（MEP）的势能面的曲率反转变成正值，从可视化角度看就是势能面进行了翻转，如下图所示，原先过渡态上的鞍点变成了极小点，这样操作之后，就可以采用最小化优化算法来优化过渡态结构了。</p><p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030102428789.png" alt="image-20241030102428789"></p><!--补充知识1：E对R求二阶偏导数得到维度为(3*N，3*N)的Hessian矩阵，Hessian中的每一个元素都是关于两个不同原子坐标的能量的导数，其中对角元素是每个原子自身坐标关于能量的二阶偏导数，因此在使用Hessian时一般只需要上或者下三角阵即可包含全部所需的信息--><!--补充知识2：Hessian对角化操作可以求出特征值和特征向量，特征值对应分子系统中原子与原子之间的振动频率，特征向量对应振动方向及振幅 。特征值全部为正代表曲率为正，坐标不论怎么改变，不论向着什么方向，能量都会升高，这对应着势能面上的谷底（极小点）；特征值除了反应坐标方向为负值（曲率为负值，也是唯一的虚频的来源，参见下面的公式），其余都为正，这对应着过渡态，也就是势能面上的鞍点，因为这个点上的结构只有沿着反应坐标变化能量才会降低，而其他所有方向都会升高--><!--振动频率ω可以通过下面的公式计算，其中λ是特征值，μ是约化质量。--><p>$$<br>\omega&#x3D;\sqrt{\frac{1}{\mu}\lambda}<br>$$</p><h3 id="Hessian标签数据处理方式"><a href="#Hessian标签数据处理方式" class="headerlink" title="Hessian标签数据处理方式"></a>Hessian标签数据处理方式</h3><ul><li><p>首先通过QM做频率分析计算得到Hessian矩阵</p></li><li><p>对Hessian矩阵进行对角化得到特征值特征向量</p></li><li><p>将唯一的负特征值改为(+1)</p></li><li><p>根据修改之后的特征向量和特征值还原出新的Hessian</p></li><li><p>以新的Hessian拟合力场参数<br>$$<br>H&#x3D;X^TDX<br>$$</p><p>$$<br>\mathsf{H}^{\prime}&#x3D;\mathbf{X}^{\mathsf{T}}\mathbf{D}^{\prime}\mathbf{X}<br>$$</p><p>$$<br>\mathbf{D}&#x3D;\begin{bmatrix}-\lambda_1&amp;&amp;\cdots&amp;&amp;\mathbf{0}\\&amp;\mathbf{0}&amp;&amp;&amp;\\\vdots&amp;&amp;\lambda_\mathbf{8}&amp;&amp;\vdots\\&amp;&amp;&amp;\ddots&amp;\\\mathbf{0}&amp;\cdots&amp;&amp;&amp;\lambda_N\end{bmatrix}\quad\mathbf{D}^{\prime}&#x3D;\begin{bmatrix}+\mathbf{1}&amp;&amp;\cdots&amp;&amp;\mathbf{0}\\&amp;\mathbf{0}&amp;&amp;&amp;\\\vdots&amp;&amp;\lambda_\mathbf{\Phi}&amp;&amp;\vdots\\&amp;&amp;&amp;\ddots&amp;\\\mathbf{0}&amp;\cdots&amp;&amp;&amp;\lambda_N\end{bmatrix}<br>$$</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-comment"># 对角化Hessian矩阵</span><br>eigenvalues, eigenvectors = np.linalg.eig(hessian_matrix)<br></code></pre></td></tr></table></figure><h2 id="TSFF的发展以及拟合的注意事项"><a href="#TSFF的发展以及拟合的注意事项" class="headerlink" title="TSFF的发展以及拟合的注意事项"></a>TSFF的发展以及拟合的注意事项</h2><h3 id="关于Hessian的拟合"><a href="#关于Hessian的拟合" class="headerlink" title="关于Hessian的拟合"></a>关于Hessian的拟合</h3><p>TSFF拟合过程中惩罚函数是预测值与标签值之间的平方误差之和，最开始的工作中为了区分分别与键角、扭转、长程作用相关的Hessian元素，对惩罚函数中的平方误差和采用了加权因子缩放[Hagler and coworkers]。后续的更新版本TSFF去掉了加权因子缩放操作，直接拟合原始Hessian。</p><p>连接同一原子上两个坐标的Hessian元素，块对角元素，并不直接对应于力场相互作用，而是包含冗余数据。块对角线元素是非对角线元素的总和，并且倾向于将适当拟合的Hessian元素与可用分子力学函数无法表示的其他元素耦合。因此，通过从参数化过程中排除块对角元素，可以在不损失数据的情况下改进Hessian拟合，称之为“非对角线Hessian拟合”。</p><h2 id="如何采用NFF取代TSFF"><a href="#如何采用NFF取代TSFF" class="headerlink" title="如何采用NFF取代TSFF"></a>如何采用NFF取代TSFF</h2><h2 id="NFF取代TSFF进行催化剂虚拟筛选的尝试"><a href="#NFF取代TSFF进行催化剂虚拟筛选的尝试" class="headerlink" title="NFF取代TSFF进行催化剂虚拟筛选的尝试"></a>NFF取代TSFF进行催化剂虚拟筛选的尝试</h2>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>计算化学</tag>
-      
-      <tag>分子力场</tag>
-      
-      <tag>过渡态力场</tag>
-      
-    </tags>
     
   </entry>
   
@@ -228,6 +199,35 @@
   
   
   <entry>
+    <title>Q2MM(TSFF)方法的细节与实现原理</title>
+    <link href="/omcat.github.io/2025/02/21/Q2MM(TSFF)%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%86%E8%8A%82%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <url>/omcat.github.io/2025/02/21/Q2MM(TSFF)%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%86%E8%8A%82%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Q2MM-TSFF-方法的细节与实现原理"><a href="#Q2MM-TSFF-方法的细节与实现原理" class="headerlink" title="Q2MM(TSFF)方法的细节与实现原理"></a>Q2MM(TSFF)方法的细节与实现原理</h1><p>TSFF力场由来已久，早期的科研人员通过传统的分子力场方法直接应用到反应过渡态的方式进行反应动力学研究。Q2MM是一种经过Per-Ola Norrby课题组经过长达二十多年开发形成的全新具有高度实用价值的过渡态力场方法，目前已经被集成到ACE（Asymmetric catalytic evaluation）和CatVS（Catalyst virtual screening）这两个全自动化均相催化剂虚拟筛选软件之中，相关论文发表于Nat. Catalysis，JACS，JCC，Chem. Sci. 等期刊。</p><p>![1c07abea3fa047817db72a78c606ade](E:\Softwares\WeChat\WeChat Files\wxid_mw2n7uz79zg222\FileStorage\Temp\1c07abea3fa047817db72a78c606ade.png)</p><p>TSFF（过渡态力场，Transition State Force Field）方法是专门为准确预测化学反应中的过渡态能量而开发的。传统的力场方法（如分子力学）主要用于预测分子在平衡状态下的几何结构和相对稳定的构象转变。然而，传统力场通常不适用于反应中的键断裂或形成过程，因为这些过程涉及显著的几何变形和势能面的复杂变化。</p><p>TSFF方法的核心创新在于，将过渡态视为势能面的局部极小值，并通过重新构建力场参数，使得过渡态几何结构可以通过最小化能量直接获得(2003_TSFF过渡态力场的原理)。与常规力场方法不同，TSFF不依赖反应物和产物的势能面，而是直接将过渡态的几何信息融入力场中。这种方法不仅能够有效捕捉过渡态的能量，还能准确预测类似反应的相对反应性和选择性。</p><h2 id="TSFF的原理"><a href="#TSFF的原理" class="headerlink" title="TSFF的原理"></a>TSFF的原理</h2><h3 id="力场参数的回归流程"><a href="#力场参数的回归流程" class="headerlink" title="力场参数的回归流程"></a>力场参数的回归流程</h3><p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030101850260.png" alt="image-20241030101850260"></p><h3 id="过渡态结构优化上的巧思"><a href="#过渡态结构优化上的巧思" class="headerlink" title="过渡态结构优化上的巧思"></a>过渡态结构优化上的巧思</h3><p>TSFF拟合需要QM计算得到的精确过渡态的结构以及其对应的Hessian矩阵，这里对标签值中的Hessian矩阵进行了修改，将Hessian矩阵对角化之后得到的特征值中的唯一的负值改成了+1（一个相对较大的正特征值），这样做会使得过渡态沿着反应路径（MEP）的势能面的曲率反转变成正值，从可视化角度看就是势能面进行了翻转，如下图所示，原先过渡态上的鞍点变成了极小点，这样操作之后，就可以采用最小化优化算法来优化过渡态结构了。</p><p><img src="C:\Users\TangKun\AppData\Roaming\Typora\typora-user-images\image-20241030102428789.png" alt="image-20241030102428789"></p><!--补充知识1：E对R求二阶偏导数得到维度为(3*N，3*N)的Hessian矩阵，Hessian中的每一个元素都是关于两个不同原子坐标的能量的导数，其中对角元素是每个原子自身坐标关于能量的二阶偏导数，因此在使用Hessian时一般只需要上或者下三角阵即可包含全部所需的信息--><!--补充知识2：Hessian对角化操作可以求出特征值和特征向量，特征值对应分子系统中原子与原子之间的振动频率，特征向量对应振动方向及振幅 。特征值全部为正代表曲率为正，坐标不论怎么改变，不论向着什么方向，能量都会升高，这对应着势能面上的谷底（极小点）；特征值除了反应坐标方向为负值（曲率为负值，也是唯一的虚频的来源，参见下面的公式），其余都为正，这对应着过渡态，也就是势能面上的鞍点，因为这个点上的结构只有沿着反应坐标变化能量才会降低，而其他所有方向都会升高--><!--振动频率ω可以通过下面的公式计算，其中λ是特征值，μ是约化质量。--><p>$$<br>\omega&#x3D;\sqrt{\frac{1}{\mu}\lambda}<br>$$</p><h3 id="Hessian标签数据处理方式"><a href="#Hessian标签数据处理方式" class="headerlink" title="Hessian标签数据处理方式"></a>Hessian标签数据处理方式</h3><ul><li><p>首先通过QM做频率分析计算得到Hessian矩阵</p></li><li><p>对Hessian矩阵进行对角化得到特征值特征向量</p></li><li><p>将唯一的负特征值改为(+1)</p></li><li><p>根据修改之后的特征向量和特征值还原出新的Hessian</p></li><li><p>以新的Hessian拟合力场参数<br>$$<br>H&#x3D;X^TDX<br>$$</p><p>$$<br>\mathsf{H}^{\prime}&#x3D;\mathbf{X}^{\mathsf{T}}\mathbf{D}^{\prime}\mathbf{X}<br>$$</p><p>$$<br>\mathbf{D}&#x3D;\begin{bmatrix}-\lambda_1&amp;&amp;\cdots&amp;&amp;\mathbf{0}\\&amp;\mathbf{0}&amp;&amp;&amp;\\\vdots&amp;&amp;\lambda_\mathbf{8}&amp;&amp;\vdots\\&amp;&amp;&amp;\ddots&amp;\\\mathbf{0}&amp;\cdots&amp;&amp;&amp;\lambda_N\end{bmatrix}\quad\mathbf{D}^{\prime}&#x3D;\begin{bmatrix}+\mathbf{1}&amp;&amp;\cdots&amp;&amp;\mathbf{0}\\&amp;\mathbf{0}&amp;&amp;&amp;\\\vdots&amp;&amp;\lambda_\mathbf{\Phi}&amp;&amp;\vdots\\&amp;&amp;&amp;\ddots&amp;\\\mathbf{0}&amp;\cdots&amp;&amp;&amp;\lambda_N\end{bmatrix}<br>$$</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-comment"># 对角化Hessian矩阵</span><br>eigenvalues, eigenvectors = np.linalg.eig(hessian_matrix)<br></code></pre></td></tr></table></figure><h2 id="TSFF的发展以及拟合的注意事项"><a href="#TSFF的发展以及拟合的注意事项" class="headerlink" title="TSFF的发展以及拟合的注意事项"></a>TSFF的发展以及拟合的注意事项</h2><h3 id="关于Hessian的拟合"><a href="#关于Hessian的拟合" class="headerlink" title="关于Hessian的拟合"></a>关于Hessian的拟合</h3><p>TSFF拟合过程中惩罚函数是预测值与标签值之间的平方误差之和，最开始的工作中为了区分分别与键角、扭转、长程作用相关的Hessian元素，对惩罚函数中的平方误差和采用了加权因子缩放[Hagler and coworkers]。后续的更新版本TSFF去掉了加权因子缩放操作，直接拟合原始Hessian。</p><p>连接同一原子上两个坐标的Hessian元素，块对角元素，并不直接对应于力场相互作用，而是包含冗余数据。块对角线元素是非对角线元素的总和，并且倾向于将适当拟合的Hessian元素与可用分子力学函数无法表示的其他元素耦合。因此，通过从参数化过程中排除块对角元素，可以在不损失数据的情况下改进Hessian拟合，称之为“非对角线Hessian拟合”。</p><h2 id="如何采用NFF取代TSFF"><a href="#如何采用NFF取代TSFF" class="headerlink" title="如何采用NFF取代TSFF"></a>如何采用NFF取代TSFF</h2><h2 id="NFF取代TSFF进行催化剂虚拟筛选的尝试"><a href="#NFF取代TSFF进行催化剂虚拟筛选的尝试" class="headerlink" title="NFF取代TSFF进行催化剂虚拟筛选的尝试"></a>NFF取代TSFF进行催化剂虚拟筛选的尝试</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算化学</tag>
+      
+      <tag>分子力场</tag>
+      
+      <tag>过渡态力场</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>有机金属催化反应的过渡态优化技巧</title>
     <link href="/omcat.github.io/2025/02/21/%E5%8E%9F%E5%AD%90%E6%95%B0%E5%A4%A7%E4%BA%8E100%E7%9A%84%E5%A4%8D%E6%9D%82%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%9C%89%E6%9C%BA%E9%87%91%E5%B1%9E%E5%82%AC%E5%8C%96%E5%8F%8D%E5%BA%94%E7%9A%84%E8%BF%87%E6%B8%A1%E6%80%81%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
     <url>/omcat.github.io/2025/02/21/%E5%8E%9F%E5%AD%90%E6%95%B0%E5%A4%A7%E4%BA%8E100%E7%9A%84%E5%A4%8D%E6%9D%82%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%9C%89%E6%9C%BA%E9%87%91%E5%B1%9E%E5%82%AC%E5%8C%96%E5%8F%8D%E5%BA%94%E7%9A%84%E8%BF%87%E6%B8%A1%E6%80%81%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</url>
@@ -245,35 +245,6 @@
     <tags>
       
       <tag>计算化学</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>ChimeraX命令行highlight原子或键</title>
-    <link href="/omcat.github.io/2025/02/21/Chimerax%E5%91%BD%E4%BB%A4%E8%A1%8Chighlight%E5%8E%9F%E5%AD%90%E6%88%96%E9%94%AE/"/>
-    <url>/omcat.github.io/2025/02/21/Chimerax%E5%91%BD%E4%BB%A4%E8%A1%8Chighlight%E5%8E%9F%E5%AD%90%E6%88%96%E9%94%AE/</url>
-    
-    <content type="html"><![CDATA[<h1 id="ChimeraX命令行highlight原子或键"><a href="#ChimeraX命令行highlight原子或键" class="headerlink" title="ChimeraX命令行highlight原子或键"></a>ChimeraX命令行highlight原子或键</h1><ol><li>先在right mouse 窗口点击开启select，用鼠标右键选中目标原子或者键，从log中读取其编号，比如#4&#x2F;a:1@Si1，具体含义可以从select命令的说明文档中查看；</li><li>用下面的命令highlight该目标原子或者键：<br>highlight #4&#x2F;a:1@Si1 transparency 50 color rgb(0,255,0) scale 1.5<br>三个参数分别指定highlight的透明度，颜色，大小</li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>工具软件</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>ChimeraX</tag>
-      
-      <tag>可视化</tag>
-      
-      <tag>分子可视化</tag>
       
     </tags>
     
@@ -313,50 +284,27 @@
   
   
   <entry>
-    <title>DCU使用教程</title>
-    <link href="/omcat.github.io/2025/02/21/DCU%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <url>/omcat.github.io/2025/02/21/DCU%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <title>ChimeraX命令行highlight原子或键</title>
+    <link href="/omcat.github.io/2025/02/21/Chimerax%E5%91%BD%E4%BB%A4%E8%A1%8Chighlight%E5%8E%9F%E5%AD%90%E6%88%96%E9%94%AE/"/>
+    <url>/omcat.github.io/2025/02/21/Chimerax%E5%91%BD%E4%BB%A4%E8%A1%8Chighlight%E5%8E%9F%E5%AD%90%E6%88%96%E9%94%AE/</url>
     
-    <content type="html"><![CDATA[<h1 id="DCU使用教程"><a href="#DCU使用教程" class="headerlink" title="DCU使用教程"></a>DCU使用教程</h1><p>按照CSDN的第一个教程操作之后(<a href="https://blog.csdn.net/weixin_43800577/article/details/127918593)%EF%BC%8Csource">https://blog.csdn.net/weixin_43800577/article/details/127918593)，source</a> torch.env.sh (就是：“在本地创建一个pytorch_env.sh的文件，添加环境变量！”这一步)，然后运行代码python xxx.py</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="ChimeraX命令行highlight原子或键"><a href="#ChimeraX命令行highlight原子或键" class="headerlink" title="ChimeraX命令行highlight原子或键"></a>ChimeraX命令行highlight原子或键</h1><ol><li>先在right mouse 窗口点击开启select，用鼠标右键选中目标原子或者键，从log中读取其编号，比如#4&#x2F;a:1@Si1，具体含义可以从select命令的说明文档中查看；</li><li>用下面的命令highlight该目标原子或者键：<br>highlight #4&#x2F;a:1@Si1 transparency 50 color rgb(0,255,0) scale 1.5<br>三个参数分别指定highlight的透明度，颜色，大小</li></ol>]]></content>
     
     
     <categories>
       
-      <category>其他</category>
+      <category>工具软件</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>DCU</tag>
+      <tag>ChimeraX</tag>
       
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>GRRM_build安装指南</title>
-    <link href="/omcat.github.io/2025/02/21/GRRM_build%E5%AE%89%E8%A3%85%E8%AF%B7%E7%9C%8B%E8%BF%99%E4%B8%AA/"/>
-    <url>/omcat.github.io/2025/02/21/GRRM_build%E5%AE%89%E8%A3%85%E8%AF%B7%E7%9C%8B%E8%BF%99%E4%B8%AA/</url>
-    
-    <content type="html"><![CDATA[<h1 id="GRRM-build安装指南"><a href="#GRRM-build安装指南" class="headerlink" title="GRRM_build安装指南"></a>GRRM_build安装指南</h1><p>按照PleaseReadFirst.pdf中的内容一步一步安装，注意点是必须首先获取linux系统的管理员权限：</p><h1 id="su"><a href="#su" class="headerlink" title="su"></a>su</h1><h1 id="sudo-root-centos系统"><a href="#sudo-root-centos系统" class="headerlink" title="sudo root    &#x2F;&#x2F;centos系统"></a>sudo root    &#x2F;&#x2F;centos系统</h1><p>然后输入密码就可以</p><p>第一步安装用于验证软件许可证的动态库文件（.so）,安装位置为文件中推荐的&#x2F;usr&#x2F;lib64，然后需要验证网络端口是否为”eth0”，只要出现这个关键词就算完成这一步。</p><p>第二步是把程序的两个主文件安装到对应的位置，即我们通过教程中命令行创建的安装位置&#x2F;usr&#x2F;local&#x2F;GRRM14Beta。这个文件夹的访问权限要设置为最高的，教程里面写的不行，按照下面的命令行来设置权限为777，且对所有用户均可访问：</p><h1 id="sudo-chmod-R-777-usr-local-GRRM14Beta"><a href="#sudo-chmod-R-777-usr-local-GRRM14Beta" class="headerlink" title="sudo chmod -R 777 &#x2F;usr&#x2F;local&#x2F;GRRM14Beta"></a>sudo chmod -R 777 &#x2F;usr&#x2F;local&#x2F;GRRM14Beta</h1><p>然后，echo $SHELL 这个命令是查看当前的linux系统的批量处理命令类型是什么，可能是csh或者是bash，如果是bash就用最后一种命令的方式来添加GRRM的环境变量。即：</p><h1 id="vim-HOME-bash-profile-这一行是用vim打开-bash-profile进行编辑"><a href="#vim-HOME-bash-profile-这一行是用vim打开-bash-profile进行编辑" class="headerlink" title="vim $HOME&#x2F;.bash_profile    &#x2F;&#x2F;这一行是用vim打开.bash_profile进行编辑"></a>vim $HOME&#x2F;.bash_profile    &#x2F;&#x2F;这一行是用vim打开.bash_profile进行编辑</h1><h1 id="export-GRRMrootBeta-usr-local-GRRM14Beta"><a href="#export-GRRMrootBeta-usr-local-GRRM14Beta" class="headerlink" title="export GRRMrootBeta&#x3D;&#x2F;usr&#x2F;local&#x2F;GRRM14Beta"></a>export GRRMrootBeta&#x3D;&#x2F;usr&#x2F;local&#x2F;GRRM14Beta</h1><h1 id="export-subgau-g09"><a href="#export-subgau-g09" class="headerlink" title="export subgau&#x3D;g09"></a>export subgau&#x3D;g09</h1><h1 id="export-subchk-formchk"><a href="#export-subchk-formchk" class="headerlink" title="export subchk&#x3D;formchk"></a>export subchk&#x3D;formchk</h1><h1 id="export-subgrr-GRRM-out"><a href="#export-subgrr-GRRM-out" class="headerlink" title="export subgrr&#x3D;GRRM.out"></a>export subgrr&#x3D;GRRM.out</h1><h1 id="PATH-PATH-GRRMrootBeta"><a href="#PATH-PATH-GRRMrootBeta" class="headerlink" title="PATH&#x3D;$PATH:$GRRMrootBeta"></a>PATH&#x3D;$PATH:$GRRMrootBeta</h1><h1 id="export-PATH"><a href="#export-PATH" class="headerlink" title="export PATH"></a>export PATH</h1><p>（注意：编辑过程中，进去之后先按i键或者insert进入编辑模式，然后把上述内容粘贴进去，然后按Esc退出编辑、保存同时进入命令模式，最后按shift+z+z退出vim）</p><p>第三步，在命令行输入GRRMpBeta看看输出结果是否是安装教程中那样，如果是就安装成功了。</p><p>可能出现的错误和解决办法：</p><ol><li>第一步验证网络端口的地方，如果是自己新安装的linux系统可能会没有网络工具，这个时候需要自行先安装，对于ubuntu系统，命令如下：</li></ol><h1 id="sudo-apt-install-net-tools-安装net-tools"><a href="#sudo-apt-install-net-tools-安装net-tools" class="headerlink" title="sudo apt install net-tools    &#x2F;&#x2F;安装net-tools"></a>sudo apt install net-tools    &#x2F;&#x2F;安装net-tools</h1><h1 id="sbin-ifconfig-a-装完之后看看有没有网络接口"><a href="#sbin-ifconfig-a-装完之后看看有没有网络接口" class="headerlink" title="&#x2F;sbin&#x2F;ifconfig -a    &#x2F;&#x2F;装完之后看看有没有网络接口"></a>&#x2F;sbin&#x2F;ifconfig -a    &#x2F;&#x2F;装完之后看看有没有网络接口</h1><p>（另外，对于centos这里的安装命令不太一样，要用yum好像）</p><ol start="2"><li><p>第二步按照教程安装给&#x2F;usr&#x2F;local&#x2F;GRRM14Beta这个文件夹的访问权限不够的话，最后软件会用不了，建议按照本文所给的命令设置权限。</p></li><li><p>可能会提示第一步安装的动态库.so文件无法访问，这里也是由于没有设置好其访问权限，通过以下方式解决：<br>动态库访问权限设置</p></li></ol><h1 id="ldconfig"><a href="#ldconfig" class="headerlink" title="ldconfig"></a>ldconfig</h1><h1 id="vim-etc-ld-so-conf-在新的一行中加入库文件所在目录"><a href="#vim-etc-ld-so-conf-在新的一行中加入库文件所在目录" class="headerlink" title="vim &#x2F;etc&#x2F;ld.so.conf      &#x2F;&#x2F;在新的一行中加入库文件所在目录"></a>vim &#x2F;etc&#x2F;ld.so.conf      &#x2F;&#x2F;在新的一行中加入库文件所在目录</h1><p>&#x2F;usr&#x2F;lib64    &#x2F;&#x2F;需要用编辑器加入这一行</p><h1 id="ldconfig-更新-etc-ld-so-cache文件"><a href="#ldconfig-更新-etc-ld-so-cache文件" class="headerlink" title="ldconfig                 &#x2F;&#x2F;更新&#x2F;etc&#x2F;ld.so.cache文件"></a>ldconfig                 &#x2F;&#x2F;更新&#x2F;etc&#x2F;ld.so.cache文件</h1><ol start="4"><li><p>修改bash文件的注意事项<br>修改和更新bash文件用以下命令<br>vim ~&#x2F;.bashrc<br>source ~&#x2F;.bashrc<br>对于g09，xtb和GRRM软件都要在root下运行，所以修改bash文件也要切换到root下，不然修改的是当前用户的bash文件不起作用</p></li><li><p>Syntax error: Bad fd number报错的解决办法(<a href="https://blog.csdn.net/qq_44664843/article/details/120509888">https://blog.csdn.net/qq_44664843/article/details/120509888</a>)<br>这个错误是执行sh脚本时报的错误，而且是打开文件的时候的发生的错误。<br>解决方案：<br>经过查阅资料得知，有可能是sh链接到了dash，而非bash，因此只需要检查链接情况即可。<br>执行命令<br>ls -l &#x2F;bin&#x2F;sh<br>结果：&#x2F;bin&#x2F;sh -&gt; dash<br>如果得到这样的输出，就执行以下命令：<br>sudo mv &#x2F;bin&#x2F;sh &#x2F;bin&#x2F;sh.orig<br>sudo ln -s &#x2F;bin&#x2F;bash &#x2F;bin&#x2F;sh<br>再次检查：<br>得到输出为&#x2F;bin&#x2F;sh  -&gt; &#x2F;bin&#x2F;bash</p></li></ol>]]></content>
-    
-    
-    <categories>
+      <tag>可视化</tag>
       
-      <category>量子化学软件</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>安装</tag>
-      
-      <tag>GRRM</tag>
+      <tag>分子可视化</tag>
       
     </tags>
     
@@ -386,6 +334,31 @@
       <tag>GPAW</tag>
       
       <tag>DFT</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DCU使用教程</title>
+    <link href="/omcat.github.io/2025/02/21/DCU%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <url>/omcat.github.io/2025/02/21/DCU%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="DCU使用教程"><a href="#DCU使用教程" class="headerlink" title="DCU使用教程"></a>DCU使用教程</h1><p>按照CSDN的第一个教程操作之后(<a href="https://blog.csdn.net/weixin_43800577/article/details/127918593)%EF%BC%8Csource">https://blog.csdn.net/weixin_43800577/article/details/127918593)，source</a> torch.env.sh (就是：“在本地创建一个pytorch_env.sh的文件，添加环境变量！”这一步)，然后运行代码python xxx.py</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DCU</tag>
       
     </tags>
     
@@ -452,25 +425,25 @@
   
   
   <entry>
-    <title>英语口语技巧</title>
-    <link href="/omcat.github.io/2025/02/21/Spoken_English_tips/"/>
-    <url>/omcat.github.io/2025/02/21/Spoken_English_tips/</url>
+    <title>GRRM_build安装指南</title>
+    <link href="/omcat.github.io/2025/02/21/GRRM_build%E5%AE%89%E8%A3%85%E8%AF%B7%E7%9C%8B%E8%BF%99%E4%B8%AA/"/>
+    <url>/omcat.github.io/2025/02/21/GRRM_build%E5%AE%89%E8%A3%85%E8%AF%B7%E7%9C%8B%E8%BF%99%E4%B8%AA/</url>
     
-    <content type="html"><![CDATA[<h1 id="英语口语技巧"><a href="#英语口语技巧" class="headerlink" title="英语口语技巧"></a>英语口语技巧</h1><ol><li>英文单词的发音一定要准确，对照音标纠正大量英文读音；</li><li>英语单词的连读，重音，长句子的停顿等等，需要具体而言具体练习，多读多练；</li><li>日常用语，地道表达需要具体学习。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="GRRM-build安装指南"><a href="#GRRM-build安装指南" class="headerlink" title="GRRM_build安装指南"></a>GRRM_build安装指南</h1><p>按照PleaseReadFirst.pdf中的内容一步一步安装，注意点是必须首先获取linux系统的管理员权限：</p><h1 id="su"><a href="#su" class="headerlink" title="su"></a>su</h1><h1 id="sudo-root-centos系统"><a href="#sudo-root-centos系统" class="headerlink" title="sudo root    &#x2F;&#x2F;centos系统"></a>sudo root    &#x2F;&#x2F;centos系统</h1><p>然后输入密码就可以</p><p>第一步安装用于验证软件许可证的动态库文件（.so）,安装位置为文件中推荐的&#x2F;usr&#x2F;lib64，然后需要验证网络端口是否为”eth0”，只要出现这个关键词就算完成这一步。</p><p>第二步是把程序的两个主文件安装到对应的位置，即我们通过教程中命令行创建的安装位置&#x2F;usr&#x2F;local&#x2F;GRRM14Beta。这个文件夹的访问权限要设置为最高的，教程里面写的不行，按照下面的命令行来设置权限为777，且对所有用户均可访问：</p><h1 id="sudo-chmod-R-777-usr-local-GRRM14Beta"><a href="#sudo-chmod-R-777-usr-local-GRRM14Beta" class="headerlink" title="sudo chmod -R 777 &#x2F;usr&#x2F;local&#x2F;GRRM14Beta"></a>sudo chmod -R 777 &#x2F;usr&#x2F;local&#x2F;GRRM14Beta</h1><p>然后，echo $SHELL 这个命令是查看当前的linux系统的批量处理命令类型是什么，可能是csh或者是bash，如果是bash就用最后一种命令的方式来添加GRRM的环境变量。即：</p><h1 id="vim-HOME-bash-profile-这一行是用vim打开-bash-profile进行编辑"><a href="#vim-HOME-bash-profile-这一行是用vim打开-bash-profile进行编辑" class="headerlink" title="vim $HOME&#x2F;.bash_profile    &#x2F;&#x2F;这一行是用vim打开.bash_profile进行编辑"></a>vim $HOME&#x2F;.bash_profile    &#x2F;&#x2F;这一行是用vim打开.bash_profile进行编辑</h1><h1 id="export-GRRMrootBeta-usr-local-GRRM14Beta"><a href="#export-GRRMrootBeta-usr-local-GRRM14Beta" class="headerlink" title="export GRRMrootBeta&#x3D;&#x2F;usr&#x2F;local&#x2F;GRRM14Beta"></a>export GRRMrootBeta&#x3D;&#x2F;usr&#x2F;local&#x2F;GRRM14Beta</h1><h1 id="export-subgau-g09"><a href="#export-subgau-g09" class="headerlink" title="export subgau&#x3D;g09"></a>export subgau&#x3D;g09</h1><h1 id="export-subchk-formchk"><a href="#export-subchk-formchk" class="headerlink" title="export subchk&#x3D;formchk"></a>export subchk&#x3D;formchk</h1><h1 id="export-subgrr-GRRM-out"><a href="#export-subgrr-GRRM-out" class="headerlink" title="export subgrr&#x3D;GRRM.out"></a>export subgrr&#x3D;GRRM.out</h1><h1 id="PATH-PATH-GRRMrootBeta"><a href="#PATH-PATH-GRRMrootBeta" class="headerlink" title="PATH&#x3D;$PATH:$GRRMrootBeta"></a>PATH&#x3D;$PATH:$GRRMrootBeta</h1><h1 id="export-PATH"><a href="#export-PATH" class="headerlink" title="export PATH"></a>export PATH</h1><p>（注意：编辑过程中，进去之后先按i键或者insert进入编辑模式，然后把上述内容粘贴进去，然后按Esc退出编辑、保存同时进入命令模式，最后按shift+z+z退出vim）</p><p>第三步，在命令行输入GRRMpBeta看看输出结果是否是安装教程中那样，如果是就安装成功了。</p><p>可能出现的错误和解决办法：</p><ol><li>第一步验证网络端口的地方，如果是自己新安装的linux系统可能会没有网络工具，这个时候需要自行先安装，对于ubuntu系统，命令如下：</li></ol><h1 id="sudo-apt-install-net-tools-安装net-tools"><a href="#sudo-apt-install-net-tools-安装net-tools" class="headerlink" title="sudo apt install net-tools    &#x2F;&#x2F;安装net-tools"></a>sudo apt install net-tools    &#x2F;&#x2F;安装net-tools</h1><h1 id="sbin-ifconfig-a-装完之后看看有没有网络接口"><a href="#sbin-ifconfig-a-装完之后看看有没有网络接口" class="headerlink" title="&#x2F;sbin&#x2F;ifconfig -a    &#x2F;&#x2F;装完之后看看有没有网络接口"></a>&#x2F;sbin&#x2F;ifconfig -a    &#x2F;&#x2F;装完之后看看有没有网络接口</h1><p>（另外，对于centos这里的安装命令不太一样，要用yum好像）</p><ol start="2"><li><p>第二步按照教程安装给&#x2F;usr&#x2F;local&#x2F;GRRM14Beta这个文件夹的访问权限不够的话，最后软件会用不了，建议按照本文所给的命令设置权限。</p></li><li><p>可能会提示第一步安装的动态库.so文件无法访问，这里也是由于没有设置好其访问权限，通过以下方式解决：<br>动态库访问权限设置</p></li></ol><h1 id="ldconfig"><a href="#ldconfig" class="headerlink" title="ldconfig"></a>ldconfig</h1><h1 id="vim-etc-ld-so-conf-在新的一行中加入库文件所在目录"><a href="#vim-etc-ld-so-conf-在新的一行中加入库文件所在目录" class="headerlink" title="vim &#x2F;etc&#x2F;ld.so.conf      &#x2F;&#x2F;在新的一行中加入库文件所在目录"></a>vim &#x2F;etc&#x2F;ld.so.conf      &#x2F;&#x2F;在新的一行中加入库文件所在目录</h1><p>&#x2F;usr&#x2F;lib64    &#x2F;&#x2F;需要用编辑器加入这一行</p><h1 id="ldconfig-更新-etc-ld-so-cache文件"><a href="#ldconfig-更新-etc-ld-so-cache文件" class="headerlink" title="ldconfig                 &#x2F;&#x2F;更新&#x2F;etc&#x2F;ld.so.cache文件"></a>ldconfig                 &#x2F;&#x2F;更新&#x2F;etc&#x2F;ld.so.cache文件</h1><ol start="4"><li><p>修改bash文件的注意事项<br>修改和更新bash文件用以下命令<br>vim ~&#x2F;.bashrc<br>source ~&#x2F;.bashrc<br>对于g09，xtb和GRRM软件都要在root下运行，所以修改bash文件也要切换到root下，不然修改的是当前用户的bash文件不起作用</p></li><li><p>Syntax error: Bad fd number报错的解决办法(<a href="https://blog.csdn.net/qq_44664843/article/details/120509888">https://blog.csdn.net/qq_44664843/article/details/120509888</a>)<br>这个错误是执行sh脚本时报的错误，而且是打开文件的时候的发生的错误。<br>解决方案：<br>经过查阅资料得知，有可能是sh链接到了dash，而非bash，因此只需要检查链接情况即可。<br>执行命令<br>ls -l &#x2F;bin&#x2F;sh<br>结果：&#x2F;bin&#x2F;sh -&gt; dash<br>如果得到这样的输出，就执行以下命令：<br>sudo mv &#x2F;bin&#x2F;sh &#x2F;bin&#x2F;sh.orig<br>sudo ln -s &#x2F;bin&#x2F;bash &#x2F;bin&#x2F;sh<br>再次检查：<br>得到输出为&#x2F;bin&#x2F;sh  -&gt; &#x2F;bin&#x2F;bash</p></li></ol>]]></content>
     
     
     <categories>
       
-      <category>其他</category>
+      <category>量子化学软件</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>英语</tag>
+      <tag>安装</tag>
       
-      <tag>学习</tag>
+      <tag>GRRM</tag>
       
     </tags>
     
@@ -500,6 +473,33 @@
       <tag>机器学习</tag>
       
       <tag>SISSO</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>英语口语技巧</title>
+    <link href="/omcat.github.io/2025/02/21/Spoken_English_tips/"/>
+    <url>/omcat.github.io/2025/02/21/Spoken_English_tips/</url>
+    
+    <content type="html"><![CDATA[<h1 id="英语口语技巧"><a href="#英语口语技巧" class="headerlink" title="英语口语技巧"></a>英语口语技巧</h1><ol><li>英文单词的发音一定要准确，对照音标纠正大量英文读音；</li><li>英语单词的连读，重音，长句子的停顿等等，需要具体而言具体练习，多读多练；</li><li>日常用语，地道表达需要具体学习。</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>英语</tag>
+      
+      <tag>学习</tag>
       
     </tags>
     
@@ -591,6 +591,35 @@
   
   
   <entry>
+    <title>libxc安装教程</title>
+    <link href="/omcat.github.io/2025/02/21/libxc%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <url>/omcat.github.io/2025/02/21/libxc%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="libxc安装教程"><a href="#libxc安装教程" class="headerlink" title="libxc安装教程"></a>libxc安装教程</h1><p>前提安装：sudo apt install automake libtool m4 autoconf</p><ol><li><p>去gitlab下载源代码 <a href="https://gitlab.com/libxc/libxc/-/archive/6.2.2/libxc-6.2.2.tar.gz">https://gitlab.com/libxc/libxc/-/archive/6.2.2/libxc-6.2.2.tar.gz</a></p></li><li><p>按照以下步骤在linux命令行中执行脚本：<br>tar -xf libxc-6.2.2.tar.gz<br>cd libxc-6.2.2<br>autoreconf -i<br>.&#x2F;configure CC&#x3D;c99 –enable-shared –disable-fortran –prefix&#x3D;$HOME&#x2F;libxc-6.2.2<br>make<br>make check<br>make install</p></li><li><p>添加环境变量</p></li></ol><h1 id="add-these-to-your-bashrc"><a href="#add-these-to-your-bashrc" class="headerlink" title="add these to your .bashrc:"></a>add these to your .bashrc:</h1><p>XC&#x3D;~&#x2F;libxc-6.2.2<br>export C_INCLUDE_PATH&#x3D;$XC&#x2F;include<br>export LIBRARY_PATH&#x3D;$XC&#x2F;lib<br>export LD_LIBRARY_PATH&#x3D;$XC&#x2F;lib</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>量子化学软件</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>安装</tag>
+      
+      <tag>DFT</tag>
+      
+      <tag>libxc</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Gaussian09+xTB+GRRM14配置</title>
     <link href="/omcat.github.io/2025/02/21/g09+xtb+GRRM14/"/>
     <url>/omcat.github.io/2025/02/21/g09+xtb+GRRM14/</url>
@@ -607,40 +636,11 @@
     
     <tags>
       
-      <tag>GRRM</tag>
-      
       <tag>Gaussian</tag>
       
+      <tag>GRRM</tag>
+      
       <tag>xTB</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>JAX安装</title>
-    <link href="/omcat.github.io/2025/02/21/jax%E5%AE%89%E8%A3%85/"/>
-    <url>/omcat.github.io/2025/02/21/jax%E5%AE%89%E8%A3%85/</url>
-    
-    <content type="html"><![CDATA[<h1 id="JAX安装"><a href="#JAX安装" class="headerlink" title="JAX安装"></a>JAX安装</h1><p>jax和jaxlib要和torch一样用cuda11.8的版本，兼容性最好</p><p>pip install –upgrade jax&#x3D;&#x3D;0.4.20 jaxlib&#x3D;&#x3D;0.4.20+cuda11.cudnn86 -f <a href="https://storage.googleapis.com/jax-releases/jax_cuda_releases.html">https://storage.googleapis.com/jax-releases/jax_cuda_releases.html</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Python/机器学习</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>安装</tag>
-      
-      <tag>JAX</tag>
-      
-      <tag>Python</tag>
       
     </tags>
     
@@ -678,16 +678,16 @@
   
   
   <entry>
-    <title>libxc安装教程</title>
-    <link href="/omcat.github.io/2025/02/21/libxc%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-    <url>/omcat.github.io/2025/02/21/libxc%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+    <title>JAX安装</title>
+    <link href="/omcat.github.io/2025/02/21/jax%E5%AE%89%E8%A3%85/"/>
+    <url>/omcat.github.io/2025/02/21/jax%E5%AE%89%E8%A3%85/</url>
     
-    <content type="html"><![CDATA[<h1 id="libxc安装教程"><a href="#libxc安装教程" class="headerlink" title="libxc安装教程"></a>libxc安装教程</h1><p>前提安装：sudo apt install automake libtool m4 autoconf</p><ol><li><p>去gitlab下载源代码 <a href="https://gitlab.com/libxc/libxc/-/archive/6.2.2/libxc-6.2.2.tar.gz">https://gitlab.com/libxc/libxc/-/archive/6.2.2/libxc-6.2.2.tar.gz</a></p></li><li><p>按照以下步骤在linux命令行中执行脚本：<br>tar -xf libxc-6.2.2.tar.gz<br>cd libxc-6.2.2<br>autoreconf -i<br>.&#x2F;configure CC&#x3D;c99 –enable-shared –disable-fortran –prefix&#x3D;$HOME&#x2F;libxc-6.2.2<br>make<br>make check<br>make install</p></li><li><p>添加环境变量</p></li></ol><h1 id="add-these-to-your-bashrc"><a href="#add-these-to-your-bashrc" class="headerlink" title="add these to your .bashrc:"></a>add these to your .bashrc:</h1><p>XC&#x3D;~&#x2F;libxc-6.2.2<br>export C_INCLUDE_PATH&#x3D;$XC&#x2F;include<br>export LIBRARY_PATH&#x3D;$XC&#x2F;lib<br>export LD_LIBRARY_PATH&#x3D;$XC&#x2F;lib</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="JAX安装"><a href="#JAX安装" class="headerlink" title="JAX安装"></a>JAX安装</h1><p>jax和jaxlib要和torch一样用cuda11.8的版本，兼容性最好</p><p>pip install –upgrade jax&#x3D;&#x3D;0.4.20 jaxlib&#x3D;&#x3D;0.4.20+cuda11.cudnn86 -f <a href="https://storage.googleapis.com/jax-releases/jax_cuda_releases.html">https://storage.googleapis.com/jax-releases/jax_cuda_releases.html</a></p>]]></content>
     
     
     <categories>
       
-      <category>量子化学软件</category>
+      <category>Python/机器学习</category>
       
     </categories>
     
@@ -696,38 +696,9 @@
       
       <tag>安装</tag>
       
-      <tag>DFT</tag>
+      <tag>JAX</tag>
       
-      <tag>libxc</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Slurm脚本模板</title>
-    <link href="/omcat.github.io/2025/02/21/slurm%E8%84%9A%E6%9C%AC%E6%A8%A1%E6%9D%BF/"/>
-    <url>/omcat.github.io/2025/02/21/slurm%E8%84%9A%E6%9C%AC%E6%A8%A1%E6%9D%BF/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Slurm脚本模板"><a href="#Slurm脚本模板" class="headerlink" title="Slurm脚本模板"></a>Slurm脚本模板</h1><p>#!&#x2F;bin&#x2F;bash</p><p>#SBATCH -n 1 # 指定核心数量<br>#SBATCH -N 1 # 指定node的数量<br>#SBATCH -t 0-5:00 # 运行总时间，天数-小时数-分钟， D-HH:MM<br>#SBATCH -p debug # 提交到哪一个分区<br>#SBATCH –mem&#x3D;2000 # 所有核心可以使用的内存池大小，MB为单位<br>#SBATCH -o myjob.o # 把输出结果STDOUT保存在哪一个文件<br>#SBATCH -e myjob.e # 把报错结果STDERR保存在哪一个文件<br>#SBATCH –mail-type&#x3D;ALL # 发送哪一种email通知：BEGIN,END,FAIL,ALL<br>#SBATCH --mail-user&#x3D;<a href="mailto:&#110;&#x65;&#x74;&#x69;&#x64;&#x40;&#x6e;&#x79;&#117;&#46;&#101;&#100;&#117;">netid@nyu.edu</a> # 把通知发送到哪一个邮箱<br>#SBATCH –constraint&#x3D;2630v3  # the Features of the nodes, using command “ showcluster “ could find them.<br>#SBATCH –gres&#x3D;gpu:n # 需要使用多少GPU，n是需要的数量</p><p>runYourCommandHere</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Linux/WSL</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Slurm</tag>
-      
-      <tag>超算</tag>
-      
-      <tag>作业调度</tag>
+      <tag>Python</tag>
       
     </tags>
     
@@ -765,11 +736,11 @@
   
   
   <entry>
-    <title>用parallel同时提交多个sh脚本</title>
-    <link href="/omcat.github.io/2025/02/21/%E7%94%A8parallel%E5%90%8C%E6%97%B6%E6%8F%90%E4%BA%A4%E5%A4%9A%E4%B8%AAsh/"/>
-    <url>/omcat.github.io/2025/02/21/%E7%94%A8parallel%E5%90%8C%E6%97%B6%E6%8F%90%E4%BA%A4%E5%A4%9A%E4%B8%AAsh/</url>
+    <title>Slurm脚本模板</title>
+    <link href="/omcat.github.io/2025/02/21/slurm%E8%84%9A%E6%9C%AC%E6%A8%A1%E6%9D%BF/"/>
+    <url>/omcat.github.io/2025/02/21/slurm%E8%84%9A%E6%9C%AC%E6%A8%A1%E6%9D%BF/</url>
     
-    <content type="html"><![CDATA[<h1 id="确保每个文件有执行权限"><a href="#确保每个文件有执行权限" class="headerlink" title="确保每个文件有执行权限"></a>确保每个文件有执行权限</h1><p>chmod +x *.sh</p><h1 id="运行所有的sh"><a href="#运行所有的sh" class="headerlink" title="运行所有的sh"></a>运行所有的sh</h1><p>ls *.sh | parallel sh {}</p><h1 id="同时提交当前路径下多个文件夹内的多个sh脚本"><a href="#同时提交当前路径下多个文件夹内的多个sh脚本" class="headerlink" title="同时提交当前路径下多个文件夹内的多个sh脚本"></a>同时提交当前路径下多个文件夹内的多个sh脚本</h1><p>要使用 <code>parallel</code> 命令同时提交 91 个文件夹内的 sh 脚本，你可以按以下方式修改命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">seq</span> 1 91 | parallel <span class="hljs-string">&#x27;cd job_&#123;&#125;_freq &amp;&amp; sh job_&#123;&#125;.sh&#x27;</span><br></code></pre></td></tr></table></figure><p>这个命令的工作原理如下：</p><ol><li><p><code>seq 1 91</code> 生成从 1 到 91 的序列。</p></li><li><p><code>parallel</code> 命令并行执行后面的命令，对每个序列数字执行一次。</p></li><li><p>对于每个数字 <code>&#123;&#125;</code>:</p><ul><li><code>cd job_&#123;&#125;_freq</code> 进入对应的文件夹</li><li><code>&amp;&amp; sh job_&#123;&#125;.sh</code> 执行该文件夹中的 sh 脚本</li></ul></li><li><p>整个过程并行进行，同时处理多个文件夹和脚本。</p></li></ol><p>使用这个命令，你可以同时提交所有 91 个文件夹中的脚本。请注意，这会同时运行大量进程，可能会对系统资源造成压力。如果需要限制同时运行的任务数量，可以使用 <code>-j</code> 参数，例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">seq</span> 1 91 | parallel -j 10 <span class="hljs-string">&#x27;cd job_&#123;&#125;_freq &amp;&amp; sh job_&#123;&#125;.sh&#x27;</span><br></code></pre></td></tr></table></figure><p>这会限制 <code>parallel</code> 最多同时运行 10 个任务。你可以根据你的系统资源和需求调整这个数字。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Slurm脚本模板"><a href="#Slurm脚本模板" class="headerlink" title="Slurm脚本模板"></a>Slurm脚本模板</h1><p>#!&#x2F;bin&#x2F;bash</p><p>#SBATCH -n 1 # 指定核心数量<br>#SBATCH -N 1 # 指定node的数量<br>#SBATCH -t 0-5:00 # 运行总时间，天数-小时数-分钟， D-HH:MM<br>#SBATCH -p debug # 提交到哪一个分区<br>#SBATCH –mem&#x3D;2000 # 所有核心可以使用的内存池大小，MB为单位<br>#SBATCH -o myjob.o # 把输出结果STDOUT保存在哪一个文件<br>#SBATCH -e myjob.e # 把报错结果STDERR保存在哪一个文件<br>#SBATCH –mail-type&#x3D;ALL # 发送哪一种email通知：BEGIN,END,FAIL,ALL<br>#SBATCH --mail-user&#x3D;<a href="mailto:&#x6e;&#x65;&#x74;&#105;&#100;&#x40;&#110;&#x79;&#117;&#x2e;&#101;&#100;&#x75;">netid@nyu.edu</a> # 把通知发送到哪一个邮箱<br>#SBATCH –constraint&#x3D;2630v3  # the Features of the nodes, using command “ showcluster “ could find them.<br>#SBATCH –gres&#x3D;gpu:n # 需要使用多少GPU，n是需要的数量</p><p>runYourCommandHere</p>]]></content>
     
     
     <categories>
@@ -781,11 +752,11 @@
     
     <tags>
       
-      <tag>Shell</tag>
+      <tag>Slurm</tag>
       
-      <tag>parallel</tag>
+      <tag>超算</tag>
       
-      <tag>脚本</tag>
+      <tag>作业调度</tag>
       
     </tags>
     
@@ -794,27 +765,27 @@
   
   
   <entry>
-    <title>超算的GRRM运行指令</title>
-    <link href="/omcat.github.io/2025/02/21/%E8%B6%85%E7%AE%97%E7%9A%84GRRM%E8%BF%90%E8%A1%8C%E6%8C%87%E4%BB%A4/"/>
-    <url>/omcat.github.io/2025/02/21/%E8%B6%85%E7%AE%97%E7%9A%84GRRM%E8%BF%90%E8%A1%8C%E6%8C%87%E4%BB%A4/</url>
+    <title>Jupyter Notebook使用教程</title>
+    <link href="/omcat.github.io/2025/02/21/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8jupyter_notebook%E7%9B%B8%E5%85%B3%E7%9A%84%E6%95%99%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <url>/omcat.github.io/2025/02/21/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8jupyter_notebook%E7%9B%B8%E5%85%B3%E7%9A%84%E6%95%99%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     
-    <content type="html"><![CDATA[<h1 id="超算的GRRM运行指令"><a href="#超算的GRRM运行指令" class="headerlink" title="超算的GRRM运行指令"></a>超算的GRRM运行指令</h1><p>加载环境：<br>source &#x2F;work&#x2F;home&#x2F;casdao&#x2F;kdywwldut&#x2F;kdywwldut&#x2F;software&#x2F;GRRM14Beta&#x2F;env.sh<br>这边还在您的家目录下放了个调度脚本GRRMpBeta.slurm，您可以参考修改下提交作业</p><p>#!&#x2F;bin&#x2F;bash<br>#SBATCH -J test<br>#SBATCH -p xhacnormala<br>#SBATCH -N 1<br>#SBATCH -n 4<br>#SBATCH -o %j.o<br>#SBATCH -e %j.e<br>source &#x2F;work&#x2F;home&#x2F;casdao&#x2F;kdywwldut&#x2F;kdywwldut&#x2F;software&#x2F;GRRM14Beta&#x2F;env.sh</p><p>GRRMpBeta</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Jupyter-Notebook使用教程"><a href="#Jupyter-Notebook使用教程" class="headerlink" title="Jupyter Notebook使用教程"></a>Jupyter Notebook使用教程</h1><p>有一些python库为了方便教学，除了说明文档外会附加ipynb文件来进行教学，非常直观且便于初学者理解，但是jupyter notebook不太开箱即用，有一些坑需要避免。</p><ol><li><p>在新的虚拟环境中安装完python包之后，需要确保我们新创建的虚拟环境可以被jupyter notebook的kernel所访问，执行以下代码：<br>python -m ipykernel install –user –name 新环境名称 –display-name “Python [conda env:新环境名称”]；</p></li><li><p>在ipynb文件所在路径conda activate 新的虚拟环境，然后在命令行执行jupyter notebook，跳转到网页；</p></li><li><p>双击打开ipynb文件后更改kernel到我们为这个ipynb新创建的虚拟环境中去就可以运行代码了。</p></li></ol>]]></content>
     
     
     <categories>
       
-      <category>量子化学软件</category>
+      <category>Python/机器学习</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>GRRM</tag>
+      <tag>Python</tag>
       
-      <tag>计算化学</tag>
+      <tag>Jupyter</tag>
       
-      <tag>超算</tag>
+      <tag>教程</tag>
       
     </tags>
     
@@ -881,27 +852,56 @@
   
   
   <entry>
-    <title>Jupyter Notebook使用教程</title>
-    <link href="/omcat.github.io/2025/02/21/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8jupyter_notebook%E7%9B%B8%E5%85%B3%E7%9A%84%E6%95%99%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/"/>
-    <url>/omcat.github.io/2025/02/21/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8jupyter_notebook%E7%9B%B8%E5%85%B3%E7%9A%84%E6%95%99%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <title>用parallel同时提交多个sh脚本</title>
+    <link href="/omcat.github.io/2025/02/21/%E7%94%A8parallel%E5%90%8C%E6%97%B6%E6%8F%90%E4%BA%A4%E5%A4%9A%E4%B8%AAsh/"/>
+    <url>/omcat.github.io/2025/02/21/%E7%94%A8parallel%E5%90%8C%E6%97%B6%E6%8F%90%E4%BA%A4%E5%A4%9A%E4%B8%AAsh/</url>
     
-    <content type="html"><![CDATA[<h1 id="Jupyter-Notebook使用教程"><a href="#Jupyter-Notebook使用教程" class="headerlink" title="Jupyter Notebook使用教程"></a>Jupyter Notebook使用教程</h1><p>有一些python库为了方便教学，除了说明文档外会附加ipynb文件来进行教学，非常直观且便于初学者理解，但是jupyter notebook不太开箱即用，有一些坑需要避免。</p><ol><li><p>在新的虚拟环境中安装完python包之后，需要确保我们新创建的虚拟环境可以被jupyter notebook的kernel所访问，执行以下代码：<br>python -m ipykernel install –user –name 新环境名称 –display-name “Python [conda env:新环境名称”]；</p></li><li><p>在ipynb文件所在路径conda activate 新的虚拟环境，然后在命令行执行jupyter notebook，跳转到网页；</p></li><li><p>双击打开ipynb文件后更改kernel到我们为这个ipynb新创建的虚拟环境中去就可以运行代码了。</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="确保每个文件有执行权限"><a href="#确保每个文件有执行权限" class="headerlink" title="确保每个文件有执行权限"></a>确保每个文件有执行权限</h1><p>chmod +x *.sh</p><h1 id="运行所有的sh"><a href="#运行所有的sh" class="headerlink" title="运行所有的sh"></a>运行所有的sh</h1><p>ls *.sh | parallel sh {}</p><h1 id="同时提交当前路径下多个文件夹内的多个sh脚本"><a href="#同时提交当前路径下多个文件夹内的多个sh脚本" class="headerlink" title="同时提交当前路径下多个文件夹内的多个sh脚本"></a>同时提交当前路径下多个文件夹内的多个sh脚本</h1><p>要使用 <code>parallel</code> 命令同时提交 91 个文件夹内的 sh 脚本，你可以按以下方式修改命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">seq</span> 1 91 | parallel <span class="hljs-string">&#x27;cd job_&#123;&#125;_freq &amp;&amp; sh job_&#123;&#125;.sh&#x27;</span><br></code></pre></td></tr></table></figure><p>这个命令的工作原理如下：</p><ol><li><p><code>seq 1 91</code> 生成从 1 到 91 的序列。</p></li><li><p><code>parallel</code> 命令并行执行后面的命令，对每个序列数字执行一次。</p></li><li><p>对于每个数字 <code>&#123;&#125;</code>:</p><ul><li><code>cd job_&#123;&#125;_freq</code> 进入对应的文件夹</li><li><code>&amp;&amp; sh job_&#123;&#125;.sh</code> 执行该文件夹中的 sh 脚本</li></ul></li><li><p>整个过程并行进行，同时处理多个文件夹和脚本。</p></li></ol><p>使用这个命令，你可以同时提交所有 91 个文件夹中的脚本。请注意，这会同时运行大量进程，可能会对系统资源造成压力。如果需要限制同时运行的任务数量，可以使用 <code>-j</code> 参数，例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">seq</span> 1 91 | parallel -j 10 <span class="hljs-string">&#x27;cd job_&#123;&#125;_freq &amp;&amp; sh job_&#123;&#125;.sh&#x27;</span><br></code></pre></td></tr></table></figure><p>这会限制 <code>parallel</code> 最多同时运行 10 个任务。你可以根据你的系统资源和需求调整这个数字。</p>]]></content>
     
     
     <categories>
       
-      <category>Python/机器学习</category>
+      <category>Linux/WSL</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Python</tag>
+      <tag>Shell</tag>
       
-      <tag>教程</tag>
+      <tag>parallel</tag>
       
-      <tag>Jupyter</tag>
+      <tag>脚本</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>超算的GRRM运行指令</title>
+    <link href="/omcat.github.io/2025/02/21/%E8%B6%85%E7%AE%97%E7%9A%84GRRM%E8%BF%90%E8%A1%8C%E6%8C%87%E4%BB%A4/"/>
+    <url>/omcat.github.io/2025/02/21/%E8%B6%85%E7%AE%97%E7%9A%84GRRM%E8%BF%90%E8%A1%8C%E6%8C%87%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="超算的GRRM运行指令"><a href="#超算的GRRM运行指令" class="headerlink" title="超算的GRRM运行指令"></a>超算的GRRM运行指令</h1><p>加载环境：<br>source &#x2F;work&#x2F;home&#x2F;casdao&#x2F;kdywwldut&#x2F;kdywwldut&#x2F;software&#x2F;GRRM14Beta&#x2F;env.sh<br>这边还在您的家目录下放了个调度脚本GRRMpBeta.slurm，您可以参考修改下提交作业</p><p>#!&#x2F;bin&#x2F;bash<br>#SBATCH -J test<br>#SBATCH -p xhacnormala<br>#SBATCH -N 1<br>#SBATCH -n 4<br>#SBATCH -o %j.o<br>#SBATCH -e %j.e<br>source &#x2F;work&#x2F;home&#x2F;casdao&#x2F;kdywwldut&#x2F;kdywwldut&#x2F;software&#x2F;GRRM14Beta&#x2F;env.sh</p><p>GRRMpBeta</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>量子化学软件</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算化学</tag>
+      
+      <tag>GRRM</tag>
+      
+      <tag>超算</tag>
       
     </tags>
     
